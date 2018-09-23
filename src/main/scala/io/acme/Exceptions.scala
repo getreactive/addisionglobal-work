@@ -1,5 +1,9 @@
 package io.acme
 
+/**
+  * Created by Rahul Kumar on 23/09/18.
+  */
+
 object Exceptions {
 
   val ENTITY_NOT_FOUND_EXCEPTION = new Exception

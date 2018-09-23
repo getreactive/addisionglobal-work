@@ -9,6 +9,10 @@ import io.acme.models.{ Credentials, User, UserToken }
 
 import scala.concurrent.Future
 
+/**
+  * Created by Rahul Kumar on 23/09/18.
+  */
+
 class SimpleAsyncTokenServiceImpl extends AsyncTokenService {
   private val dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
   override protected def authenticate(credentials: Credentials): Future[User] = {
