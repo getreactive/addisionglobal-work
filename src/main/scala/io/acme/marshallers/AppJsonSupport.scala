@@ -5,8 +5,8 @@ import io.acme.models.{ Credentials, UserToken }
 import spray.json.DefaultJsonProtocol
 
 /**
-  * Created by Rahul Kumar on 23/09/18.
-  */
+ * Created by Rahul Kumar on 23/09/18.
+ */
 
 trait AppJsonSupport extends SprayJsonSupport {
   import DefaultJsonProtocol._

@@ -2,6 +2,7 @@ package io.acme.routes
 
 import akka.actor.{ ActorRef, ActorSystem }
 import akka.event.Logging
+import akka.http.scaladsl.model.{ HttpResponse, StatusCode }
 import akka.http.scaladsl.server.Directives.{ concat, pathEnd, pathPrefix, _ }
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.directives.MethodDirectives.post
@@ -18,8 +19,8 @@ import scala.concurrent.duration._
 import scala.util.{ Failure, Success }
 
 /**
-  * Created by Rahul Kumar on 23/09/18.
-  */
+ * Created by Rahul Kumar on 23/09/18.
+ */
 
 trait AppRoutes extends AppJsonSupport {
   implicit def system: ActorSystem
@@ -45,9 +46,9 @@ trait AppRoutes extends AppJsonSupport {
                   case Success(promise) =>
                     onComplete(promise.future) {
                       case Success(token) => complete(token)
-                      case Failure(e) => failWith(e)
+                      case Failure(e) => complete(HttpResponse(StatusCode.int2StatusCode(401), entity = "Oops. No Token"))
                     }
-                  case Failure(e) => failWith(e)
+                  case Failure(e) => complete(new RuntimeException("Error !!."))
                 }
               }
             })
